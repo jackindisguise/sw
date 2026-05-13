@@ -1,6 +1,6 @@
 # sw
 
-A small TypeScript stopwatch utility.
+A small stopwatch utility that returns a plain object.
 
 ## Install
 
@@ -13,28 +13,67 @@ npm install jackindisguise/sw
 ### ESM
 
 ```ts
-import { StopWatch } from "sw";
+import { sw } from "sw";
 
-const sw = new StopWatch();
+const timer = sw();
 
 // ...do some work...
 
-const duration = sw.stop();
-console.log(`Elapsed: ${duration} ms`);
+const duration = timer.stop();
+
+console.log({
+  start: timer.start,
+  end: timer.end,
+  duration,
+});
 ```
 
 ### CJS
 
 ```js
-const { StopWatch } = require("sw");
+const { sw } = require("sw");
 
-const sw = new StopWatch();
+const timer = sw();
 
 // ...do some work...
 
-const duration = sw.stop();
-console.log(`Elapsed: ${duration} ms`);
+const duration = timer.stop();
+
+console.log({
+  start: timer.start,
+  end: timer.end,
+  duration,
+});
 ```
+
+## API
+
+`sw()` returns an object with these members:
+
+```ts
+{
+  start?: number;
+  end?: number;
+  duration?: number;
+  restart(): void;
+  stop(): number;
+}
+```
+
+Behavior:
+
+- `start` is set when the stopwatch is created or restarted.
+- `stop()` records the current time in `end`, sets `duration`, and returns the elapsed milliseconds.
+- `restart()` clears `end` and `duration`, then starts timing again.
+- Calling `stop()` twice without a `restart()` throws `SW already stopped`.
+
+## Test
+
+```bash
+npm test
+```
+
+This runs the Node built-in test runner against the packaged ESM build.
 
 ## Build
 

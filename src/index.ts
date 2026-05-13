@@ -1,20 +1,41 @@
-export class StopWatch {
-	private _start: number;
-	private _stop?: number;
-	private _duration?: number;
-	constructor() {
-		this._start = Date.now();
-	}
+import assert from "node:assert/strict";
 
-	restart() {
-		this._start = Date.now();
-		this._stop = undefined;
-		this._duration = undefined;
-	}
+export interface SW {
+	start?: number;
+	end?: number;
+	duration?: number;
+	restart: () => void;
+	stop: () => number;
+}
 
-	stop() {
-		this._stop = Date.now();
-		this._duration = this._stop - this._start;
-		return this._duration;
-	}
+export function sw(): SW {
+	let start = Date.now();
+	let end: number | undefined = undefined;
+	let duration: number | undefined = undefined;
+	return {
+		get start() {
+			return start;
+		},
+
+		get end() {
+			return end;
+		},
+
+		get duration() {
+			return duration;
+		},
+
+		restart: () => {
+			start = Date.now();
+			end = undefined;
+			duration = undefined;
+		},
+
+		stop: () => {
+			assert.equal(end, undefined, "SW already stopped");
+			end = Date.now();
+			duration = end - start;
+			return duration;
+		},
+	} as SW;
 }

@@ -3,23 +3,33 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.StopWatch = void 0;
-class StopWatch {
-  _start;
-  _stop;
-  _duration;
-  constructor() {
-    this._start = Date.now();
-  }
-  restart() {
-    this._start = Date.now();
-    this._stop = undefined;
-    this._duration = undefined;
-  }
-  stop() {
-    this._stop = Date.now();
-    this._duration = this._stop - this._start;
-    return this._duration;
-  }
+exports.sw = sw;
+var _strict = _interopRequireDefault(require("node:assert/strict"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function sw() {
+  let start = Date.now();
+  let end = undefined;
+  let duration = undefined;
+  return {
+    get start() {
+      return start;
+    },
+    get end() {
+      return end;
+    },
+    get duration() {
+      return duration;
+    },
+    restart: () => {
+      start = Date.now();
+      end = undefined;
+      duration = undefined;
+    },
+    stop: () => {
+      _strict.default.equal(end, undefined, "SW already stopped");
+      end = Date.now();
+      duration = end - start;
+      return duration;
+    }
+  };
 }
-exports.StopWatch = StopWatch;
