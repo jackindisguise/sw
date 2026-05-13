@@ -5,5 +5,6 @@ export interface SW {
     restart: () => void;
     stop: () => number;
 }
-export declare function sw(): SW;
+declare function sw(): SW;
+export default sw;
 //# sourceMappingURL=index.d.ts.map

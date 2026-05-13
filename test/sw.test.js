@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { sw } from "../src/index.js";
+import sw from "../dist/esm/index.js";
 function withMockedNow(values) {
 	const originalNow = Date.now;
 	let index = 0;

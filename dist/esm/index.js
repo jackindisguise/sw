@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-export function sw() {
+function sw() {
     let start = Date.now();
     let end = undefined;
     let duration = undefined;
@@ -26,4 +26,5 @@ export function sw() {
         },
     };
 }
+export default sw;
 //# sourceMappingURL=index.js.map

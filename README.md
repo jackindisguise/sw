@@ -13,7 +13,7 @@ npm install jackindisguise/sw
 ### ESM
 
 ```ts
-import { sw } from "sw";
+import sw from "sw";
 
 const timer = sw();
 
@@ -31,7 +31,7 @@ console.log({
 ### CJS
 
 ```js
-const { sw } = require("sw");
+const sw = require("sw").default;
 
 const timer = sw();
 

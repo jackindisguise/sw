@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.sw = sw;
+exports.default = void 0;
 var _strict = _interopRequireDefault(require("node:assert/strict"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function sw() {
@@ -33,3 +33,4 @@ function sw() {
     }
   };
 }
+var _default = exports.default = sw;
