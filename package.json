@@ -13,15 +13,17 @@
 		}
 	},
 	"scripts": {
+		"clean": "npx rimraf -rf dist",
 		"build:esm": "tsc",
 		"build:cjs": "npx babel dist/esm --out-dir dist/cjs --plugins @babel/plugin-transform-modules-commonjs --copy-files",
+		"build:clean": "npm run clean && npm run build",
 		"build": "npm run build:esm && npm run build:cjs",
-		"test": "npm run build && node --test"
+		"test": "node --test",
+		"test:clean": "npm run build:clean && npm run test"
 	},
 	"keywords": [],
 	"author": "jackindisguise",
 	"license": "ISC",
-	"type": "module",
 	"dependencies": {
 		"@babel/cli": "^7.28.6",
 		"@babel/plugin-transform-modules-commonjs": "^7.28.6",
