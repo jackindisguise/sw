@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/jackindisguise/sw/compare/v1.1.0...v1.1.1) (2026-05-20)
+
+
+### Bug Fixes
+
+* moving to tsup to make life easier? ([9cf4005](https://github.com/jackindisguise/sw/commit/9cf400552f9f982acbb8748d9ef2e72de1221b2d))
+
 ## [1.1.0](https://github.com/jackindisguise/sw/compare/v1.0.0...v1.1.0) (2026-05-19)
 
 
