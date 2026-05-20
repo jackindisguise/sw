@@ -8,7 +8,7 @@ export interface SW {
 	stop: () => number;
 }
 
-function sw(): SW {
+export function sw(): SW {
 	let start = Date.now();
 	let end: number | undefined = undefined;
 	let duration: number | undefined = undefined;
@@ -37,7 +37,5 @@ function sw(): SW {
 			duration = end - start;
 			return duration;
 		},
-	} as SW;
+	};
 }
-
-export default sw;

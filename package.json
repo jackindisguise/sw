@@ -3,13 +3,13 @@
 	"version": "1.1.0",
 	"description": "",
 	"main": "./dist/cjs/index.js",
-	"module": "./dist/esm/index.js",
+	"module": "./dist/esm/index.mjs",
 	"types": "./dist/esm/index.d.ts",
 	"exports": {
 		".": {
-			"types": "./dist/esm/index.d.ts",
-			"import": "./dist/esm/index.js",
-			"require": "./dist/cjs/index.js"
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
 		}
 	},
 	"scripts": {
@@ -18,16 +18,18 @@
 		"build:cjs": "npx babel dist/esm --out-dir dist/cjs --plugins @babel/plugin-transform-modules-commonjs --copy-files",
 		"build:clean": "npm run clean && npm run build",
 		"build": "npm run build:esm && npm run build:cjs",
+		"bundle": "npx tsup src/index.ts --format esm,cjs --dts",
 		"test": "node --test",
 		"test:clean": "npm run build:clean && npm run test"
 	},
 	"keywords": [],
 	"author": "jackindisguise",
 	"license": "ISC",
-	"dependencies": {
+	"devDependencies": {
 		"@babel/cli": "^7.28.6",
 		"@babel/plugin-transform-modules-commonjs": "^7.28.6",
-		"@types/node": "^25.7.0",
+		"@types/node": "^25.9.1",
+		"tsup": "^8.5.1",
 		"typescript": "^6.0.3"
 	}
 }

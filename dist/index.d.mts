@@ -1,4 +1,4 @@
-export interface SW {
+interface SW {
     start?: number;
     end?: number;
     duration?: number;
@@ -6,5 +6,5 @@ export interface SW {
     stop: () => number;
 }
 declare function sw(): SW;
-export default sw;
-//# sourceMappingURL=index.d.ts.map
+
+export { type SW, sw };
